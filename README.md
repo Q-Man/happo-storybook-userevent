@@ -14,3 +14,10 @@ userEvent interactions are not executed when Happo snapshots are taken, but in S
 `HAPPO_API_KEY=xxx HAPPO_API_SECRET=yyy yarn happo run`
 
 "With Fire Event" snapshot has the radio button selected (as expected), "With User Event" has not (I'd expect selection here, too)
+
+# update
+
+The issue was fixed here:
+https://github.com/happo/happo-plugin-storybook/issues/95
+
+I added another commit to demonstrate a problem with snapshots for slow typing. Snapshots don't wait for `userEvent.type` with a delay to complete when called in a `play` function (but it works with `beforeSnapshot`). 
